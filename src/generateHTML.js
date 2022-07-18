@@ -1,2 +1,2 @@
-module.exports = index.js;
+module.exports = generateHTML;
 
