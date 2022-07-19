@@ -82,12 +82,33 @@ function confirmNext() {
     })
 }
 
+function addEngineer(){
+    inquirer
+    .prompt(engineerQuestions)
+    .then(res=>{
+        // create new instance for Engineer and then add it to the employeeArray using push
+        const engineer = new Engineer()
+    })
+
+    confirmNext()
+}
+
+function addIntern () {}
+
 function addEmpoloyee () {
     inquirer.prompt([{
         type:"list",
         message:"Do you want to add Engineer or Intern",
-        choices:["Engineer","Intern"]
+        choices:["Engineer","Intern"],
+        name: "selection"
     }])
+    .then(res=>{
+        if(res.selection==="Engineer"){
+            addEngineer()
+        } else {
+            addIntern()
+        }
+    })
 }
 
 function createHTML () {
