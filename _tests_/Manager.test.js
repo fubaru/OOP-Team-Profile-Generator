@@ -13,7 +13,7 @@ describe("Manager", () => {
     });
 
     describe("test Manager's methods", () => {
-        it("test all properties", () => {
+        it("test all methods", () => {
             const manager = new Manager('Mochi', 2, 'Mochi@gmail.com', '465-454-4545');
           
             expect(manager.getRole()).toEqual('Manager')
