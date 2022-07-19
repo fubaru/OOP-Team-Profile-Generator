@@ -1,6 +1,8 @@
 const inquirer = require("inquirer");
 const fs = require("fs");
 const Manager = require("./lib/Manager")
+const Engineer = require("./lib/Engineer")
+const Intern = require("./lib/Intern")
 //need to import Engineer and Intern 
 
 const generateHTML = require("./src/generateHTML")
@@ -30,11 +32,34 @@ const managerQuestions = [
     }
 ]
 
+const engineerQuestions = [
+    {
+        type:"input",
+        message:"What is your engineer's name?",
+        name:"engineerName"
+    },
+    {
+        type:"input",
+        message:"What is your engineer's id?",
+        name:"engineerID"
+    },
+    {
+        type:"input",
+        message:"What is your engineer's email?",
+        name:"engineerEmail"
+    },
+    {
+        type:"input",
+        message:"What is your engineer's gitHub?",
+        name:"engineerGithub"
+    }
+]
+
 function init() {
     inquirer
     .prompt(managerQuestions)
     .then(res=>{
-        const manager = new Manager(response.mannagerName, response.managerID, response.managerEmail)
+        const manager = new Manager(res.mannagerName, res.managerID, res.managerEmail)
 
         employeeArray.push(manager)
 
@@ -48,7 +73,7 @@ function confirmNext() {
         message: "Do you want to add more employees?",
         name: "addMore"
     }])
-    .then(response=>{
+    .then(res=>{
         if(addMore===true){
             addEmpoloyee()
         } else {
@@ -58,7 +83,11 @@ function confirmNext() {
 }
 
 function addEmpoloyee () {
-
+    inquirer.prompt([{
+        type:"list",
+        message:"Do you want to add Engineer or Intern",
+        choices:["Engineer","Intern"]
+    }])
 }
 
 function createHTML () {
