@@ -147,7 +147,7 @@ function addEmpoloyee () {
 }
 
 function createHTML () {
-    
+    console.log(employeeArray)
 }
 
 init();
