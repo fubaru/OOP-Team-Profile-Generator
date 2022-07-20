@@ -148,6 +148,20 @@ function addEmpoloyee () {
 
 function createHTML () {
     console.log(employeeArray)
+
+    let cards = ""
+
+    for(let i=0; i < employeeArray.length; i++) {
+        if(employeeArray[i].getRole()==='Manager') {
+            cards = cards + managerCard(employeeArray[i])
+        } else if (employeeArray[i].getRole()==='Engineer') {
+            cards = cards + engineerCard(employeeArray[i])
+        } else {
+            cards = cards + interCard(employeeArray[i])
+        }
+    }
+
+    fs.writeFileSync("./dist/team.html", generateHTML(cards))
 }
 
 init();
