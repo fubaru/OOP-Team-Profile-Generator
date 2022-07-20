@@ -1,11 +1,11 @@
 const inquirer = require("inquirer");
 const fs = require("fs");
-const Manager = require("./lib/Manager")
-const Engineer = require("./lib/Engineer")
-const Intern = require("./lib/Intern")
+const Manager = require("./lib/Manager");
+const Engineer = require("./lib/Engineer");
+const Intern = require("./lib/Intern");
 //need to import Engineer and Intern 
 
-const generateHTML = require("./src/generateHTML")
+const generateHTML = require("./src/generateHTML");
 
 //create Engineer questions and intern questions separately 
 const employeeArray = [];
@@ -30,7 +30,7 @@ const managerQuestions = [
         message:"What is your manager's officeNumber?",
         name:"managerNumber"
     }
-]
+];
 
 const engineerQuestions = [
     {
@@ -53,19 +53,42 @@ const engineerQuestions = [
         message:"What is your engineer's gitHub?",
         name:"engineerGithub"
     }
-]
+];
+
+const internQuestions = [
+    {
+        type:"input",
+        message:"What is your intern's name?",
+        name:"internName"
+    },
+    {
+        type:"input",
+        message:"What is your intern's id?",
+        name:"internID"
+    },
+    {
+        type:"input",
+        message:"What is your intern's email?",
+        name:"internEmail"
+    },
+    {
+        type:"input",
+        message:"Where does your Intern go to school?",
+        name:"internSchool"
+    }
+];
 
 function init() {
     inquirer
     .prompt(managerQuestions)
     .then(res=>{
-        const manager = new Manager(res.mannagerName, res.managerID, res.managerEmail)
+        const manager = new Manager(res.managerName, res.managerID, res.managerEmail, res.managerNumber)
 
         employeeArray.push(manager)
 
         confirmNext()
-    })
-}
+    });
+};
 
 function confirmNext() {
     inquirer.prompt([{
@@ -79,21 +102,33 @@ function confirmNext() {
         } else {
             createHTML()
         }
-    })
-}
+    });
+};
 
 function addEngineer(){
     inquirer
     .prompt(engineerQuestions)
     .then(res=>{
         // create new instance for Engineer and then add it to the employeeArray using push
-        const engineer = new Engineer()
-    })
+        const engineer = new Engineer(res.engineerName, res.engineerID, res.engineerEmail, res.engineerGithub)
 
-    confirmNext()
-}
+        employeeArray.push(engineer)
 
-function addIntern () {}
+        confirmNext()
+    });
+};
+
+function addIntern () {
+    inquirer
+    .prompt(internQuestions)
+    .then(res=>{
+        const intern = new Intern(res.internName, res.internID, res.internEmail, res.internSchool)
+
+        employeeArray.push(intern)
+
+        confirmNext()
+    });
+};
 
 function addEmpoloyee () {
     inquirer.prompt([{
