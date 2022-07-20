@@ -6,7 +6,9 @@ const Intern = require("./lib/Intern");
 //need to import Engineer and Intern 
 
 const generateHTML = require("./src/generateHTML");
-const managerCard = require("./src/managerHTML")
+const managerCard = require("./src/managerHTML");
+const engineerCard = require("./src/EngineerHTML");
+const internCard = require("./src/internHTML");
 
 //create Engineer questions and intern questions separately 
 const employeeArray = [];
