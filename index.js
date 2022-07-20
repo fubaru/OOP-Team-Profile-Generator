@@ -100,7 +100,7 @@ function confirmNext() {
         name: "addMore"
     }])
     .then(res=>{
-        if(addMore===true){
+        if(res.addMore===true){
             addEmpoloyee()
         } else {
             createHTML()
