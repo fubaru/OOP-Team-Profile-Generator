@@ -6,6 +6,7 @@ const Intern = require("./lib/Intern");
 //need to import Engineer and Intern 
 
 const generateHTML = require("./src/generateHTML");
+const managerCard = require("./src/managerHTML")
 
 //create Engineer questions and intern questions separately 
 const employeeArray = [];
@@ -157,7 +158,7 @@ function createHTML () {
         } else if (employeeArray[i].getRole()==='Engineer') {
             cards = cards + engineerCard(employeeArray[i])
         } else {
-            cards = cards + interCard(employeeArray[i])
+            cards = cards + internCard(employeeArray[i])
         }
     }
 
